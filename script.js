@@ -32,6 +32,22 @@ const portfolio = {
       type: "Android & Web",
       url: "https://github.com/yusufkhan391921/Any-to-PDF",
       linkLabel: "View on GitHub"
+    },
+    {
+      name: "DirectRF: Nearby Android Voice Calls",
+      description: "An Android project exploring offline, nearby phone-to-phone voice calls with Google Nearby Connections, Opus audio, and a foreground call service. It requires two Android 10+ phones with Google Play services. Real-device discovery, pairing, two-way audio, range, latency, and reconnect behavior have not yet been verified.",
+      status: "Device testing not yet verified",
+      type: "Android · Kotlin",
+      links: [
+        {
+          url: "https://github.com/yusufkhan391921/directrf-android",
+          label: "GitHub source (private)"
+        },
+        {
+          url: "https://www.linkedin.com/feed/update/urn:li:share:7513104539055636482/",
+          label: "Project overview"
+        }
+      ]
     }
   ],
   skills: [
@@ -125,7 +141,10 @@ main.innerHTML = `
             <div class="project-card__top"><span class="project-card__number">SELECTED PROJECT</span><span class="project-card__type">${project.type}</span></div>
             <h3>${project.name}</h3>
             <p class="project-card__description">${project.description}</p>
-            <a class="text-link" href="${project.url}" target="_blank" rel="noopener noreferrer">${project.linkLabel}${icon("arrow")}</a>
+            ${project.status ? `<p class="project-card__status">${project.status}</p>` : ""}
+            <div class="project-card__links">
+              ${(project.links || [{ url: project.url, label: project.linkLabel }]).map((link) => `<a class="text-link" href="${link.url}" target="_blank" rel="noopener noreferrer">${link.label}${icon("arrow")}</a>`).join("")}
+            </div>
           </article>`).join("")}
       </div>
     </div>
